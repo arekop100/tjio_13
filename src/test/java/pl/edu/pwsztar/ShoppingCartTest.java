@@ -15,8 +15,8 @@ public class ShoppingCartTest {
     @DisplayName("Should add product to Shopping Cart")
     @ParameterizedTest
     @CsvSource({
-            "Banana, 30, 2",
-            "Apple, 10, 1",
+            "Banana, 20, 3",
+            "Apple, 5, 2",
             "orange, 2, 5"
     })
     void shouldAddProductToShoppingCart(String productName, int price, int amount) {
@@ -28,11 +28,11 @@ public class ShoppingCartTest {
         assertTrue(result);
     }
 
-    @DisplayName("shouldn't add product to Shopping Cart")
+    @DisplayName("Shouldn't add product to Shopping Cart")
     @ParameterizedTest
     @CsvSource({
-            "Banana, -30, 2",
-            "Apple, 10, 0",
+            "Banana, -20, 3",
+            "Apple, 5, 0",
             "orange, 2, -5"
     })
     void shouldNotAddProductToShoppingCart(String productName, int price, int amount) {
@@ -73,7 +73,7 @@ public class ShoppingCartTest {
     void shouldNotDeleteProductFromShoppingCart(String productName, int amount) {
         //given
         final ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.addProducts("Banana", 20, 1);
+        shoppingCart.addProducts("Banana", 20, -1);
         shoppingCart.addProducts("Apple", 20, 0);
         shoppingCart.addProducts("Orange", 20, 3);
         //when
